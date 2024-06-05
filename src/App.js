@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'; // Remove 'Switch' as it's not used
+import Navbar from './components/pages/Navbar';
+import Footer from './components/pages/Footer';
+import Hero from './components/pages/Hero';
+import P from './components/pages/P';
+import P2 from './components/pages/P2';
+import P3 from './components/pages/P3';
+import Subscribe from './components/pages/Subscribe';
+import Donate from './components/pages/Donate'; // Assuming you have a Donate component
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+
+      {/* No need for Switch as we have only one route */}
+      <Route path="/" exact>
+        <Hero />
+        
+        <P />
+        <P2 />
+        <P3 />
+        <Subscribe />
+      </Route>
+      <Route path="/donate"> {/* Lowercase 'donate' */}
+        <Donate />
+      </Route>
+      <Footer />
+    </Router>
   );
 }
 
